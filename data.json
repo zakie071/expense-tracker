@@ -18,5 +18,9 @@
     {
         "amount": 7000.0,
         "category": "Real Estate"
+    },
+    {
+        "amount": 700.0,
+        "category": "Insurance"
     }
 ]
