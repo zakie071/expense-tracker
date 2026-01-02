@@ -22,5 +22,9 @@
     {
         "amount": 700.0,
         "category": "Insurance"
+    },
+    {
+        "amount": 4000.0,
+        "category": "shopping"
     }
 ]

@@ -1,19 +1,16 @@
-from expenses import add_expense, save_expenses
-
-
+from expenses import add_expenses, save_expenses
 
 def main():
     try:
-        amount = float(input("Enter expense amount: "))
-        category = input("Enter expense category: ")
-
-        expense = add_expense(amount, category)
+        amount = float(input("Please enter expenses amount... "))
+        category = input("Please enter category... ")
+        
+        expense = add_expenses(amount, category)
         save_expenses(expense)
-        print(" Expenses saved successfully!")
-    
+        
+        print("Expense saved successfully")
     except ValueError:
-        print("Invalid input. Please enter a numeric value for amount.")
-    
-
+        print("Please enter a valid amount")
+        
 if __name__ == "__main__":
     main()
