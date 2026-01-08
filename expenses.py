@@ -20,6 +20,7 @@ def save_expenses(expense):
     with open(DATA_FILE, "w") as file:
         json.dump(data, file, indent=4)
         
+    
 def get_expenses():
     with open(DATA_FILE, "r") as file:
         return json.load(file)
