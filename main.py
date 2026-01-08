@@ -3,14 +3,14 @@ from expenses import(
     save_expenses,
     get_expenses, 
     monthly_summary, 
-    category_suammary)
+    category_summary)
 
 
 def add_expenses_flow():
     
     try:
-        amount = float(input("Please enter expenses amount... "))
-        category = input("Please enter category... ")
+        amount = float(input("Please enter expenses amount\n "))
+        category = input("Please enter category\n ")
         expense = add_expenses(amount, category)
         save_expenses(expense)
         
@@ -25,8 +25,8 @@ def view_expenses():
         return
     
     print("\n--- Your Expenses ---")
-    for i, exp in enumerate(expenses, start=1):
-        print(f"{i}. {exp['category']} - {exp['amount']}")
+    for i, exp in enumerate(expenses, 1):
+        print(f"{i}. {exp['date']} | {exp['category']} | {exp['amount']:.2f}")
         
 def show_monthly_summary():
     month = input("Enter Month (YYYY-MM) ")
@@ -34,7 +34,7 @@ def show_monthly_summary():
     print(f"📅 Total for {month}: {total}")
     
 def show_category_summary():
-    summary = category_suammary()
+    summary = category_summary()
     print("\n--- Category Summary ---")
     for cat, amt in summary.items():
         print(f"{cat}: {amt}")

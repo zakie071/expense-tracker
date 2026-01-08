@@ -1,66 +1,27 @@
 [
     {
-        "amount": 6000,
-        "category": "Education"
-    },
-    {
-        "amount": 6000,
-        "category": "Education"
-    },
-    {
-        "amount": 6000,
-        "category": "Education"
-    },
-    {
-        "amount": 6000,
-        "category": "Education"
-    },
-    {
-        "amount": 7000.0,
-        "category": "Real Estate"
-    },
-    {
-        "amount": 700.0,
-        "category": "Insurance"
-    },
-    {
-        "amount": 4000.0,
-        "category": "shopping"
-    },
-    {
-        "amount": 60000.0,
-        "category": "Travel"
+        "amount": 500.0,
+        "category": "MMA",
+        "date": "2026-01"
     },
     {
         "amount": 2000.0,
-        "category": "Susu"
-    },
-    {
-        "amount": 3488.0,
-        "category": "Gadget"
-    },
-    {
-        "amount": 900.0,
-        "category": "Games"
-    },
-    {
-        "amount": 8000.0,
-        "category": "susu",
+        "category": "savings",
         "date": "2026-01"
     },
     {
-        "amount": 8000.0,
-        "category": "Susu",
+        "amount": 548.0,
+        "category": "Insurance",
         "date": "2026-01"
     },
     {
-        "amount": 150000.0,
-        "category": "Susu",
+        "amount": 462.0,
+        "category": "Tithes",
         "date": "2026-01"
     },
     {
-        "amount": 200000.0,
-        "category": "Susu",
+        "amount": 300.0,
+        "category": "Miscellaneous",
         "date": "2026-01"
     }
 ]

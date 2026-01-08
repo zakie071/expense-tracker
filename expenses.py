@@ -3,6 +3,18 @@ import json
 
 DATA_FILE = "data.json"
 
+def load_data():
+    try:
+        with open(DATA_FILE, "r") as file:
+            return json.load(file)
+    except(FileNotFoundError, FileExistsError, json.JSONDecodeError):
+        return[]
+
+def save_data(data):
+    with open(DATA_FILE, "w") as file:
+        json.dump(data, file, indent=4)
+    
+
 def add_expenses(amount, category):
     return {
         "amount" : amount,
@@ -12,36 +24,25 @@ def add_expenses(amount, category):
     
     
 def save_expenses(expense):
-    with open(DATA_FILE, "r") as file:
-        data = json.load(file)
-        
+    data= load_data()
     data.append(expense)
-
-    with open(DATA_FILE, "w") as file:
-        json.dump(data, file, indent=4)
+    save_data(data)
         
     
 def get_expenses():
-    with open(DATA_FILE, "r") as file:
-        return json.load(file)
+   return load_data()
 
 def monthly_summary(month):
-    expenses = get_expenses()
-    total = 0
-    
-    for exp in expenses:
-        if exp.get("date") == month:
-            total += exp["amount"]
-    
-    return total
+    return sum (
+        exp["amount"]
+        for exp in load_data()
+        if exp.get("date")== month
+    )
 
-def category_suammary():
-    expenses = get_expenses()
-    summary = {}
-    
-    for exp in expenses:
-        category = exp["category"]
-        summary[category]= summary.get(category, 0) + exp["amount"]
-        
+def category_summary():
+    summary= {}
+    for exp in load_data():
+        cat = exp["category"]
+        summary[cat]= summary.get(cat, 0) + exp["amount"]
     
     return summary
