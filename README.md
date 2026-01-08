@@ -8,3 +8,11 @@ A simple command-line expense tracker built with Python.
 
 ## Tech
 - Python
+
+
+## How to Run
+python main.py
+
+
+- Monthly expense summary
+- Category-wise breakdown
