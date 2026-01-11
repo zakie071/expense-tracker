@@ -1,0 +1,70 @@
+# from expenses import(
+#     add_expenses,
+#     save_expenses,
+#     get_expenses, 
+#     monthly_summary, 
+#     category_summary)
+
+
+# def add_expenses_flow():
+    
+#     try:
+#         amount = float(input("Please enter expenses amount\n "))
+#         category = input("Please enter category\n ")
+#         expense = add_expenses(amount, category)
+#         save_expenses(expense)
+        
+#         print("Expense saved successfully")
+#     except ValueError:
+#         print("Please enter a valid amount")
+        
+# def view_expenses():
+#     expenses = get_expenses()
+#     if not expenses:
+#         print("No expenses added yet!")
+#         return
+    
+#     print("\n--- Your Expenses ---")
+#     for i, exp in enumerate(expenses, 1):
+#         print(f"{i}. {exp['date']} | {exp['category']} | {exp['amount']:.2f}")
+        
+# def show_monthly_summary():
+#     month = input("Enter Month (YYYY-MM) ")
+#     total = monthly_summary(month)
+#     print(f"📅 Total for {month}: {total}")
+    
+# def show_category_summary():
+#     summary = category_summary()
+#     print("\n--- Category Summary ---")
+#     for cat, amt in summary.items():
+#         print(f"{cat}: {amt}")
+
+# def main():
+
+#     while True:
+#         print("\n Expenses Tracker")
+#         print("1. Add Expenses")
+#         print("2. View Expenses")
+#         print("3. Monthly Summary")
+#         print("4. Category Summary")
+#         print("5. Exit")
+        
+    
+#         choice = input("Enter your option: ")
+#         if choice == "1":
+#             add_expenses_flow()
+#         elif choice == "2":
+#             view_expenses()
+#         elif choice == "3":
+#             show_monthly_summary()
+#         elif choice == "4":
+#             show_category_summary()
+#         elif choice == "5":
+#             print("\n Goodbye 👋\nYou exited Successfully from SACFIN")
+#             break
+#         else:
+#             print("Invalid Choice!")
+        
+# if __name__ == "__main__":
+#     main()
+

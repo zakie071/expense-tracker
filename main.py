@@ -1,69 +1,85 @@
-from expenses import(
-    add_expenses,
-    save_expenses,
-    get_expenses, 
-    monthly_summary, 
-    category_summary)
+from fastapi import FastAPI, Request, Form
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+from datetime import datetime
+import json
+from typing import List
+from typing import Optional
+
+app = FastAPI(title="Expense Tracker API")
+
+# Templates & static files
+templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+DATA_FILE = "data.json"
+
+class Expense(BaseModel):
+    amount: float
+    category: str
+    date: Optional[str] = None
 
 
-def add_expenses_flow():
-    
+def load_data():
     try:
-        amount = float(input("Please enter expenses amount\n "))
-        category = input("Please enter category\n ")
-        expense = add_expenses(amount, category)
-        save_expenses(expense)
-        
-        print("Expense saved successfully")
-    except ValueError:
-        print("Please enter a valid amount")
-        
-def view_expenses():
-    expenses = get_expenses()
-    if not expenses:
-        print("No expenses added yet!")
-        return
-    
-    print("\n--- Your Expenses ---")
-    for i, exp in enumerate(expenses, 1):
-        print(f"{i}. {exp['date']} | {exp['category']} | {exp['amount']:.2f}")
-        
-def show_monthly_summary():
-    month = input("Enter Month (YYYY-MM) ")
-    total = monthly_summary(month)
-    print(f"📅 Total for {month}: {total}")
-    
-def show_category_summary():
-    summary = category_summary()
-    print("\n--- Category Summary ---")
-    for cat, amt in summary.items():
-        print(f"{cat}: {amt}")
+        with open(DATA_FILE, "r") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
 
-def main():
 
-    while True:
-        print("\n Expenses Tracker")
-        print("1. Add Expenses")
-        print("2. View Expenses")
-        print("3. Monthly Summary")
-        print("4. Category Summary")
-        print("5. Exit")
-        
-    
-        choice = input("Enter your option: ")
-        if choice == "1":
-            add_expenses_flow()
-        elif choice == "2":
-            view_expenses()
-        elif choice == "3":
-            show_monthly_summary()
-        elif choice == "4":
-            show_category_summary()
-        elif choice == "5":
-            print("\n Goodbye 👋\nYou exited Successfully from SACFIN")
-            break
-        else:
-            print("Invalid Choice!")
-        
-if __name__ == "__main__":
-    main()
+def save_data(data):
+    with open(DATA_FILE, "w") as f:
+        json.dump(data, f, indent=4)
+
+
+@app.get("/", response_class=HTMLResponse)
+def root(request: Request):
+    return templates.TemplateResponse(
+        "index.html",
+        {"request": request}
+    )
+
+
+@app.post("/expenses")
+def add_expense(
+    amount: float = Form(...),
+    category: str = Form(...)
+):
+    data = load_data()
+
+    expense_dict = {
+        "amount": amount,
+        "category": category,
+        "date": datetime.now().strftime("%Y-%m")
+    }
+
+    data.append(expense_dict)
+    save_data(data)
+
+    return {"status": "success", "expense": expense_dict}
+
+
+
+@app.get("/expenses", response_model=List[Expense])
+def get_expenses():
+    return load_data()
+
+
+@app.get("/summary/monthly/{month}")
+def monthly_summary(month: str):
+    total = sum(
+        exp["amount"] for exp in load_data() if exp.get("date") == month
+    )
+    return {"month": month, "total": total}
+
+
+@app.get("/summary/category")
+def category_summary():
+    summary = {}
+    for exp in load_data():
+        cat = exp["category"]
+        summary[cat] = summary.get(cat, 0) + exp["amount"]
+    return summary

@@ -17,7 +17,7 @@ def save_data(data):
 
 def add_expenses(amount, category):
     return {
-        "amount" : amount,
+        "amount": amount,
         "category": category,
         "date": datetime.now().strftime("%Y-%m")
     }

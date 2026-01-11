@@ -2,26 +2,46 @@
     {
         "amount": 500.0,
         "category": "MMA",
-        "date": "2026-01"
+        "date": "2026-01-09"
     },
     {
-        "amount": 2000.0,
-        "category": "savings",
-        "date": "2026-01"
-    },
-    {
-        "amount": 548.0,
+        "amount": 200.0,
         "category": "Insurance",
+        "date": "2026-01-10"
+    },
+    {
+        "amount": 200.0,
+        "category": "Insurance",
+        "date": "2026-01-10"
+    },
+    {
+        "amount": 300.0,
+        "category": "Susu",
+        "date": "2026-01-11"
+    },
+    {
+        "amount": 500.0,
+        "category": "Food",
+        "date": "2026-01-11"
+    },
+    {
+        "amount": 400.0,
+        "category": "Drinks",
         "date": "2026-01"
     },
     {
-        "amount": 462.0,
-        "category": "Tithes",
+        "amount": 120.0,
+        "category": "Food",
         "date": "2026-01"
     },
     {
         "amount": 300.0,
-        "category": "Miscellaneous",
+        "category": "Drinks",
+        "date": "2026-01"
+    },
+    {
+        "amount": 505.0,
+        "category": "MMA",
         "date": "2026-01"
     }
 ]
