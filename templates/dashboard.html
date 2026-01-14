@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+
+<div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-bold mb-4">Welcome, {{ user }}</h2>
+
+    <form action="/secure/expenses" method="post" class="space-y-3">
+        <input name="amount" type="number" step="0.01" placeholder="Amount" class="w-full border p-2 rounded" required>
+        <input name="category" placeholder="Category" class="w-full border p-2 rounded" required>
+        <button class="w-full bg-blue-600 text-white p-2 rounded">Add Expense</button>
+    </form>
+
+    <a href="/logout" class="block text-center mt-4 text-red-600">Logout</a>
+</div>
+
+</body>
+</html>

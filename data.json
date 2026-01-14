@@ -43,5 +43,21 @@
         "amount": 505.0,
         "category": "MMA",
         "date": "2026-01"
+    },
+    {
+        "amount": 507.0,
+        "category": "MMA",
+        "date": "2026-01"
+    },
+    {
+        "amount": 1000.0,
+        "category": "Game",
+        "date": "2026-01",
+        "user": "sackey"
+    },
+    {
+        "amount": 50000.0,
+        "category": "Travel",
+        "date": "2026-01"
     }
 ]
